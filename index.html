@@ -1,83 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edge Computing Assignment</title>
-
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
-    text-align: center;
-}
-
-.container {
-    padding: 20px;
-}
-
-h1, h2 {
-    color: #333;
-}
-
-.carousel {
-    max-width: 90%;
-    margin: auto;
-}
-
-.carousel img {
-    width: 100%;
-    max-height: 300px;
-    border-radius: 10px;
-}
-
-#dynamic {
-    font-size: 18px;
-    color: #2c3e50;
-    margin-top: 15px;
-}
-
-@media (min-width: 768px) {
-    .carousel img {
-        max-height: 400px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Computing Assignment 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            /* Light Lemon Yellow Background */
+            background-color: #FFFACD; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .carousel { 
+            width: 100%; 
+            max-width: 700px; 
+            margin: 30px 0; 
+            border: 8px solid white;
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+        }
+        .carousel-item img {
+            height: 400px;
+            object-fit: cover; /* Ensures images look good even if sizes differ */
+        }
+        .info-header { margin-bottom: 20px; }
+        .dynamic-box { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 50px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h1>Name: Diksha</h1>
-    <h2>PRN: 1012412135</h2>
-
-    <div class="carousel">
-        <img id="slide" src="img1.jpg">
+    <div class="info-header text-center">
+        <h1 class="display-5 fw-bold text-dark">Name: Diksha kale</h1>
+        <h3 class="text-secondary">PRN: 1012412135</h3>
     </div>
 
-    <p id="dynamic"></p>
-</div>
+    <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active"><img src="OIP.webp" class="d-block w-100" alt="Slide 1"></div>
+            <div class="carousel-item"><img src="R.jpg" class="d-block w-100" alt="Slide 2"></div>
+            <div class="carousel-item"><img src="s.webp" class="d-block w-100" alt="Slide 3"></div>
+            <div class="carousel-item"><img src="t.webp" class="d-block w-100" alt="Slide 4"></div>
+            <div class="carousel-item"><img src="u.avif" class="d-block w-100" alt="Slide 5"></div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
 
-<script>
-let photos = [""C:\Users\Student\Downloads\OIP.webp"", ""C:\Users\Student\Downloads\R.jpg"", ""C:\Users\Student\Downloads\s.webp"", ""C:\Users\Student\Downloads\t.webp"", ""C:\Users\Student\Downloads\u.avif""];
-let i = 0;
+    <div class="dynamic-box text-center">
+        <span class="fw-bold">Current Server Time: </span>
+        <span id="clock" class="text-danger fw-bold"></span>
+    </div>
 
-setInterval(() => {
-    i = (i + 1) % photos.length;
-    document.getElementById("slide").src = photos[i];
-}, 2000);
-
-// Dynamic Element – Time Based Greeting
-let hour = new Date().getHours();
-let greeting = hour < 12 ? " Morning " :
-               hour < 18 ? " Afternoon " :
-               " Evening ";
-
-document.getElementById("dynamic").innerHTML =
-    greeting + " | Current Time: " + new Date().toLocaleString();
-</script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toLocaleString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 </body>
 </html>
-
