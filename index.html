@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edge Computing Assignment</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.carousel {
+    max-width: 90%;
+    margin: auto;
+}
+
+.carousel img {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+}
+
+#dynamic {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-top: 15px;
+}
+
+@media (min-width: 768px) {
+    .carousel img {
+        max-height: 400px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Name: Diksha</h1>
+    <h2>PRN: 1012412135</h2>
+
+    <div class="carousel">
+        <img id="slide" src="img1.jpg">
+    </div>
+
+    <p id="dynamic"></p>
+</div>
+
+<script>
+let photos = [""C:\Users\Student\Downloads\OIP.webp"", ""C:\Users\Student\Downloads\R.jpg"", ""C:\Users\Student\Downloads\s.webp"", ""C:\Users\Student\Downloads\t.webp"", ""C:\Users\Student\Downloads\u.avif""];
+let i = 0;
+
+setInterval(() => {
+    i = (i + 1) % photos.length;
+    document.getElementById("slide").src = photos[i];
+}, 2000);
+
+// Dynamic Element – Time Based Greeting
+let hour = new Date().getHours();
+let greeting = hour < 12 ? " Morning " :
+               hour < 18 ? " Afternoon " :
+               " Evening ";
+
+document.getElementById("dynamic").innerHTML =
+    greeting + " | Current Time: " + new Date().toLocaleString();
+</script>
+
+</body>
+</html>
 
